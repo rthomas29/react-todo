@@ -1,11 +1,12 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import TodoForm from '../TodoForm'
 import TodoList from '../TodoList'
 import Title from '../Title'
 import './styles.css'
 
 const TodoContainer = () => {
-  const initialState = { todoList: [] }
+  // fetch todoList from localStorage if it exists
+  const initialState = { todoList: JSON.parse(localStorage.getItem('todoList')) || [] }
 
   // reducer to handle our state changes
   // created reducer to mirror setState behavior of class components
@@ -42,6 +43,22 @@ const TodoContainer = () => {
     currentTodoList[taskIndex].isComplete = !currentTodoList[taskIndex].isComplete
     setState({ todoList: currentTodoList })
   }
+
+  const hydrateTodoListFromLocalStorage = () => {
+    if (localStorage.hasOwnProperty('todoList')) {
+      const todoList = localStorage.getItem('todoList')
+      try {
+        setState({ todoList: JSON.parse(todoList) })
+      } catch (error) {
+        setState({ todoList: [] })
+      }
+    }
+  }
+
+  useEffect(() => {
+    // whenever our state is updated, sync localStorage with app state
+    localStorage.setItem('todoList', JSON.stringify(state.todoList))
+  }, [state])
 
   const { todoList } = state
   const numTasks = todoList.length
