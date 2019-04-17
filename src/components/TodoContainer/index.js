@@ -44,17 +44,6 @@ const TodoContainer = () => {
     setState({ todoList: currentTodoList })
   }
 
-  const hydrateTodoListFromLocalStorage = () => {
-    if (localStorage.hasOwnProperty('todoList')) {
-      const todoList = localStorage.getItem('todoList')
-      try {
-        setState({ todoList: JSON.parse(todoList) })
-      } catch (error) {
-        setState({ todoList: [] })
-      }
-    }
-  }
-
   useEffect(() => {
     // whenever our state is updated, sync localStorage with app state
     localStorage.setItem('todoList', JSON.stringify(state.todoList))
@@ -63,7 +52,7 @@ const TodoContainer = () => {
   const { todoList } = state
   const numTasks = todoList.length
   return (
-    <div className='container'>
+    <section className='container'>
       <Title numTasks={numTasks} />
       <TodoForm handleTaskAdd={handleTaskAdd} />
       <TodoList
@@ -72,7 +61,7 @@ const TodoContainer = () => {
         numTasks={numTasks}
         deleteCompletedTasks={deleteCompletedTasks}
       />
-    </div>
+    </section>
   )
 }
 
