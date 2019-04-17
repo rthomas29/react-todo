@@ -32,7 +32,7 @@ const TodoList = ({ todos, handleTaskDelete, toggleTaskCompletion, deleteComplet
     }
     {numTasks > 0 &&
       <Button className='btn btn-danger' onClick={deleteCompletedTasks}>
-        Clear removed tasks
+        Clear completed tasks
         </Button>
     }
   </main>
