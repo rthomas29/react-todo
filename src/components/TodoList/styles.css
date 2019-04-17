@@ -1,0 +1,13 @@
+.list-container {
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 5px;
+}
+
+.list-item {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.complete {
+  text-decoration: line-through;
+}
