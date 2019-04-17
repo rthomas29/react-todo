@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoList /> should render 1`] = `
+<main
+  class="list-container"
+>
+  <div
+    class="list-container"
+  >
+    <div
+      class="list-item"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+      />
+      <p>
+        1. task 1
+      </p>
+    </div>
+  </div>
+  <div
+    class="list-container"
+  >
+    <div
+      class="list-item"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+      />
+      <p>
+        2. task 2
+      </p>
+    </div>
+  </div>
+</main>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoContainer /> should render 1`] = `
+<div
+  class="container"
+>
+  <h2>
+    No tasks remaining 🤗
+  </h2>
+  <form
+    class="form-inline"
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        for="task-input"
+      >
+        Task:
+      </label>
+      <input
+        aria-label="checkbox to toggle task completion"
+        class="form-control"
+        id="task-input"
+        placeholder="Enter new task here"
+        type="text"
+        value=""
+      />
+      <button
+        class="btn btn-success"
+        type="submit"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+  <main
+    class="list-container"
+  />
+</div>
+`;

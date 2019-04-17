@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from '../Button'
 import './styles.css'
 
 const TodoForm = ({ handleTaskAdd, handleTaskDelete }) => {
@@ -12,16 +13,18 @@ const TodoForm = ({ handleTaskAdd, handleTaskDelete }) => {
   return (
     <form className='form-inline' onSubmit={(e) => handleTaskSubmit(e)}>
       <div className='form-group'>
+        <label htmlFor='task-input'>Task:</label>
         <input
+          id='task-input'
           type='text'
           className='form-control'
-          placeholder='Add new task'
+          placeholder='Enter new task here'
           aria-label='checkbox to toggle task completion'
           onChange={(e) => setInputState(e.target.value)}
           value={inputState}
           autoFocus
         />
-        <button className='btn btn-success' type='submit'>Add</button>
+        <Button type='submit' className='btn btn-success'>Add</Button>
       </div>
     </form>
   )
