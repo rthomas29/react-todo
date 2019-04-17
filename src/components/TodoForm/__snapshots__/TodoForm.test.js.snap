@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TodoForm /> should render 1`] = `
+exports[`<TodoForm /> should match snapshot 1`] = `
 <form
   class="form-inline"
 >

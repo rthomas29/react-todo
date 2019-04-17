@@ -3,7 +3,7 @@ import { render, fireEvent } from 'react-testing-library'
 import Button from './index'
 
 describe('<Button />', () => {
-  it('should render', () => {
+  it('should match snapshot', () => {
     const { container } = render(<Button />)
     expect(container.firstChild).toBeInTheDocument()
     expect(container.firstChild).toMatchSnapshot()
