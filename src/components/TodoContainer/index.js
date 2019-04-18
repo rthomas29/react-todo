@@ -5,8 +5,11 @@ import Title from '../Title'
 import './styles.css'
 
 const TodoContainer = () => {
-  // fetch todoList from localStorage if it exists
-  const initialState = { todoList: JSON.parse(localStorage.getItem('todoList')) || [] }
+  const initialState = {
+    // fetch todoList from localStorage if it exists
+    todoList: JSON.parse(localStorage.getItem('todoList')) || [],
+    allMarkedComplete: false
+  }
 
   // reducer to handle our state changes
   // created reducer to mirror setState behavior of class components
@@ -17,7 +20,7 @@ const TodoContainer = () => {
   const handleTaskAdd = (task) => {
     if (task.length > 0) {
       const currentTodoList = [...state.todoList]
-      const newTodo = { task, isCompleted: false }
+      const newTodo = { task, isComplete: false }
       currentTodoList.push(newTodo)
       setState({ todoList: currentTodoList })
     }
@@ -44,22 +47,39 @@ const TodoContainer = () => {
     setState({ todoList: currentTodoList })
   }
 
+  // toggle isComplete boolean for all tasks
+  const toggleAllTasksCompletion = () => {
+    const currentTodoList = [...state.todoList]
+    let allMarkedComplete = state.allMarkedComplete
+    for (let todo of currentTodoList) {
+      if (allMarkedComplete) {
+        todo.isComplete = false
+      } else {
+        todo.isComplete = true
+      }
+    }
+    allMarkedComplete = !allMarkedComplete
+    setState({ todoList: currentTodoList, allMarkedComplete })
+  }
+
   useEffect(() => {
     // whenever our state is updated, sync localStorage with app state
     localStorage.setItem('todoList', JSON.stringify(state.todoList))
   }, [state])
 
-  const { todoList } = state
+  const { todoList, allMarkedComplete } = state
   const numTasks = todoList.length
   return (
     <section className='container'>
       <Title numTasks={numTasks} />
       <TodoForm handleTaskAdd={handleTaskAdd} />
       <TodoList
+        allMarkedComplete={allMarkedComplete}
         todos={todoList}
         toggleTaskCompletion={toggleTaskCompletion}
         numTasks={numTasks}
         deleteCompletedTasks={deleteCompletedTasks}
+        toggleAllTasksCompletion={toggleAllTasksCompletion}
       />
     </section>
   )
