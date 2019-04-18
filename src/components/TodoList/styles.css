@@ -11,3 +11,9 @@
 .complete {
   text-decoration: line-through;
 }
+
+.btn-group {
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 300;
+}
