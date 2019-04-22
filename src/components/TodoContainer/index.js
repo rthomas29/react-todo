@@ -37,7 +37,11 @@ const TodoContainer = () => {
       }
     }
     // update todoList with remaingTasks array
-    setState({ todoList: remainingTasks })
+    if (remainingTasks.length === 0) {
+      setState({ todoList: remainingTasks, allMarkedComplete: false })
+    } else {
+      setState({ todoList: remainingTasks })
+    }
   }
 
   // toggle isComplete boolean for specified task
