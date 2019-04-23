@@ -11,20 +11,19 @@ const TodoForm = ({ handleTaskAdd, handleTaskDelete }) => {
     handleTaskAdd(value)
   }
   return (
-    <form className='form-inline' onSubmit={(e) => handleTaskSubmit(e)}>
-      <div className='form-group'>
+    <form onSubmit={(e) => handleTaskSubmit(e)}>
+      <div>
         <label htmlFor='task-input'>Task:</label>
         <input
           id='task-input'
           type='text'
-          className='form-control'
           placeholder='Enter new task here'
           aria-label='checkbox to toggle task completion'
           onChange={(e) => setInputState(e.target.value)}
           value={inputState}
           autoFocus
         />
-        <Button type='submit' className='btn btn-success'>Add</Button>
+        <Button type='submit' className='add-btn'>Add</Button>
       </div>
     </form>
   )

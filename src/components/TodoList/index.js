@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Button from '../Button'
 import './styles.css'
 
@@ -26,15 +26,14 @@ const TodoList = ({
               className='list-container'
             >
               <div className='list-item'>
-                <input
-                  type='checkbox'
-                  className='form-check-input'
-                  checked={isChecked}
-                  onChange={() => toggleTaskCompletion(i)}
-                />
-                <p style={style}>
+                <span style={style}>
+                  <input
+                    type='checkbox'
+                    checked={isChecked}
+                    onChange={() => toggleTaskCompletion(i)}
+                  />
                   {`${listNumber}. ${todo.task}`}
-                </p>
+                </span>
               </div>
             </div>
           )
@@ -42,10 +41,10 @@ const TodoList = ({
       }
       {numTasks > 0 &&
         <div className='btn-group'>
-          <Button className='btn btn-sm btn-danger' onClick={deleteCompletedTasks}>
+          <Button onClick={deleteCompletedTasks} className='clear-btn'>
             Clear completed tasks
           </Button>
-          <Button className='btn btn-sm btn-info' onClick={toggleAllTasksCompletion}>{markedCompleteBtnText}</Button>
+          <Button onClick={toggleAllTasksCompletion} className='delete-btn'>{markedCompleteBtnText}</Button>
         </div>
       }
     </main>
